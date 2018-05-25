@@ -164,6 +164,22 @@ RSpec.describe Babushka::SystemProfile do
         end
       end
 
+      context 'on an elementaryOS box' do
+        let(:profile) { Babushka::ElementarySystemProfile.new }
+        before { allow(profile).to receive(:get_version_info).and_return(%Q{DISTRIB_ID="elementary"\nDISTRIB_RELEASE=0.4.1\nDISTRIB_CODENAME=loki\nDISTRIB_DESCRIPTION="elementary OS 0.4.1 Loki"}) }
+        # before { allow(profile).to receive(:get_version_info).and_return(%Q{Distributor ID: elementary\nDescription: elementary OS 0.4.1 Loki\nRelease: 0.4.1\nCodename: loki}) }
+
+        it "should have correct name and version info" do
+          expect(info_for(profile)).to eq([:linux, :elementary, "0.4.1", "0.4.1", :loki])
+        end
+        it "should have correct version info" do
+          expect(info_strs_for(profile)).to eq(['Linux', 'elementary OS', 'Loki'])
+        end
+        it "should be described correctly" do
+          expect(profile.description).to eq('elementary OS Linux 0.4.1 (Loki)')
+        end
+      end
+
       context 'on a Redhat box' do
         let(:profile) { Babushka::RedhatSystemProfile.new }
         before { allow(profile).to receive(:get_version_info).and_return("Red Hat Enterprise Linux Server release 6.4 (Santiago)") }

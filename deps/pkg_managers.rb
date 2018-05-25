@@ -7,7 +7,8 @@ dep 'package manager', :cmd do
 end
 
 dep 'apt' do
-  requires 'package manager'.with('apt-get')
+  # It works in many cases without
+  #requires 'package manager'.with('apt-get')
   requires {
     on :ubuntu, 'apt source'.with(:repo => 'main'), 'apt source'.with(:repo => 'universe')
     on :debian, 'apt source'.with(:repo => 'main')

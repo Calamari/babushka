@@ -32,8 +32,15 @@ module Babushka
     end
 
     def self.detect_debian_derivative
-      if File.exists?('/etc/lsb-release') && File.read('/etc/lsb-release')[/ubuntu/i]
-        UbuntuSystemProfile
+      if File.exists?('/etc/lsb-release')
+        lsb_release = File.read('/etc/lsb-release')
+        if lsb_release[/ubuntu/i]
+          UbuntuSystemProfile
+        elsif lsb_release[/elementary/i]
+          ElementarySystemProfile
+        else
+          DebianSystemProfile
+        end
       elsif File.exists?('/etc/os-release') && File.read('/etc/os-release')[/ID=raspbian/]
         RaspbianSystemProfile
       else

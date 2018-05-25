@@ -42,6 +42,12 @@ RSpec.describe Babushka::SystemDetector do
         expect(File).to receive(:read).with("/etc/lsb-release").and_return('Ubuntu')
         expect(subject).to be_an_instance_of(Babushka::UbuntuSystemProfile)
       end
+      it "should return ElementarySystemProfile on elementary OS boxes" do
+        expect(File).to receive(:exists?).with("/etc/debian_version").and_return(true)
+        expect(File).to receive(:exists?).with("/etc/lsb-release").and_return(true)
+        expect(File).to receive(:read).with("/etc/lsb-release").and_return('elementary')
+        expect(subject).to be_an_instance_of(Babushka::ElementarySystemProfile)
+      end
       it "should return RaspbianSystemProfile on Raspbian boxes" do
         expect(File).to receive(:exists?).with("/etc/debian_version").and_return(true)
         expect(File).to receive(:exists?).with("/etc/lsb-release").and_return(false)

@@ -164,6 +164,13 @@ module Babushka
     def pkg_helper; AptHelper end
   end
 
+  class ElementarySystemProfile < UbuntuSystemProfile
+    def flavour_str; 'elementary OS' end
+    def flavour; :elementary end
+    # def codename_str; get_version_info.val_for('DISTRIB_DESCRIPTION').split(' ').last.gsub(/[^\w]/, '') end
+    # def codename; version_info.val_for('DISTRIB_CODENAME').to_sym end
+  end
+
   class RedhatSystemProfile < LinuxSystemProfile
     def flavour_str; 'Red Hat' end
 
