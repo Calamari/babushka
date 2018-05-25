@@ -77,6 +77,9 @@ module Babushka
           '17.10' => :artful,
           '18.04' => :bionic,
         },
+        :elementary => {
+          '0.4.1' => :loki
+        },
         :debian => {
           '4' => :etch,
           '5' => :lenny,
@@ -154,6 +157,9 @@ module Babushka
           '17.04' => 'Zesty Zapus',
           '17.10' => 'Artful Aardvark',
           '18.04' => 'Bionic Beaver',
+        },
+        :elementary => {
+          '0.4.1' => 'Loki'
         },
         :redhat => {
           '3' => 'Taroon',
