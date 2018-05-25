@@ -72,6 +72,10 @@ module Babushka
           '15.04' => :vivid,
           '15.10' => :wily,
           '16.04' => :xenial,
+          '16.10' => :yakkety,
+          '17.04' => :zesty,
+          '17.10' => :artful,
+          '18.04' => :bionic,
         },
         :debian => {
           '4' => :etch,
@@ -146,6 +150,10 @@ module Babushka
           '15.04' => 'Vivid Vervet',
           '15.10' => 'Wily Werewolf',
           '16.04' => 'Xenial Xerus',
+          '16.10' => 'Yakkety Yak',
+          '17.04' => 'Zesty Zapus',
+          '17.10' => 'Artful Aardvark',
+          '18.04' => 'Bionic Beaver',
         },
         :redhat => {
           '3' => 'Taroon',
